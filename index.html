@@ -63,13 +63,13 @@
       </span>
       <div>
         <h1 class="text-sm sm:text-base font-bold font-display leading-tight">7. Sınıf Matematik İnteraktif Çalışma Masası</h1>
-        <p class="text-[10px] text-indigo-300">Tam Sayı Problemleri (-104 Puan) • Sıralama • Sonlu/Devirli • 50+ Çözümlü Örnek</p>
+        <p class="text-[10px] text-indigo-300">18. Soru (Kartlar & Çarpma Özellikleri) • Tam Sayılar (-104 P) • Sıralama • 60+ Çözümlü Soru</p>
       </div>
     </div>
     <div class="flex items-center gap-2">
       <span class="text-[11px] text-indigo-300 hidden sm:inline">Konu:</span>
       <span id="aktifBaslikRozet" class="px-2.5 py-0.5 rounded-full font-bold bg-amber-400 text-slate-950 text-[11px]">
-        Yarışma Problemi (-104 Puan)
+        18. Soru (Kartlar ve Çarpma Özellikleri)
       </span>
     </div>
   </header>
@@ -90,24 +90,49 @@
             <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-900">
               1. SÜTUN: TÜM KONU BAŞLIKLARI
             </span>
-            <span class="text-[10px] text-slate-400">5 Ana Tema</span>
+            <span class="text-[10px] text-slate-400">6 Ana Tema</span>
           </div>
 
           <div class="space-y-3">
             
-            <!-- TEMA 1: TAM SAYILARLA İŞLEMLER (YARIŞMA PUANI SORUSU - YENİ) -->
+                        <!-- TEMA 1: ÇARPMA İŞLEMİNİN ÖZELLİKLERİ VE TERS ELEMAN (18. SORU - YENİ) -->
             <div>
-              <span class="text-[10px] font-bold uppercase tracking-wider text-blue-700 block mb-1">
-                TEMA 1: TAM SAYI PROBLEMLERİ (YENİ)
+              <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-700 block mb-1">
+                TEMA 1: ÇARPMA İŞLEMİNİN ÖZELLİKLERİ (YENİ)
               </span>
               <div class="space-y-1">
-                <!-- Yeni Soru: -104 Puan Problemi -->
-                <button onclick="setCategory('soruYarisma')" id="cat-soruYarisma" class="cat-btn w-full text-left p-2.5 rounded-xl font-medium text-xs transition-all border bg-indigo-50 border-indigo-300 shadow-sm text-indigo-950 flex items-center justify-between">
+                <!-- 18. Soru: Kartların Arka Yüzleri ve Çarpma Özellikleri -->
+                <button onclick="setCategory('soru18')" id="cat-soru18" class="cat-btn w-full text-left p-2.5 rounded-xl font-medium text-xs transition-all border bg-indigo-50 border-indigo-300 shadow-sm text-indigo-950 flex items-center justify-between">
+                  <div>
+                    <span class="font-bold text-slate-900 block">⭐ 18. Soru (5 Kart Oyunu)</span>
+                    <span class="text-[10px] text-slate-500">-2/3, 4/5, -3/2, 5/4, -7 kartları</span>
+                  </div>
+                  <span class="text-[10px] bg-amber-400 text-slate-900 font-bold px-1.5 py-0.2 rounded">Yeni Soru</span>
+                </button>
+                <!-- 10 Çözümlü Çarpma ve Ters Eleman Problemi -->
+                <button onclick="setCategory('carpma10')" id="cat-carpma10" class="cat-btn w-full text-left p-2.5 rounded-xl font-medium text-xs transition-all border border-slate-200 hover:border-slate-300 bg-white text-slate-700 flex items-center justify-between">
+                  <div>
+                    <span class="font-bold text-slate-900 block">📝 10 Çözümlü Çarpma ve Ters Eleman</span>
+                    <span class="text-[10px] text-slate-500">Etkisiz, yutan, değişme, birleşme, dağılma</span>
+                  </div>
+                  <span class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.2 rounded">10 Örnek</span>
+                </button>
+              </div>
+            </div>
+
+<!-- TEMA 2: TAM SAYI PROBLEMLERİ (-104 PUAN) -->
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-blue-700 block mb-1">
+                TEMA 2: TAM SAYI PROBLEMLERİ (-104 PUAN)
+              </span>
+              <div class="space-y-1">
+                <!-- Soru: -104 Puan Problemi -->
+                <button onclick="setCategory('soruYarisma')" id="cat-soruYarisma" class="cat-btn w-full text-left p-2.5 rounded-xl font-medium text-xs transition-all border border-slate-200 hover:border-slate-300 bg-white text-slate-700 flex items-center justify-between">
                   <div>
                     <span class="font-bold text-slate-900 block">⭐ Yarışma Problemi (-104 Puan)</span>
                     <span class="text-[10px] text-slate-500">Her yanlış -8 puan, toplam -104 puan</span>
                   </div>
-                  <span class="text-[10px] bg-amber-400 text-slate-900 font-bold px-1.5 py-0.2 rounded">Yeni Soru</span>
+                  <span class="text-[10px] bg-blue-100 text-blue-800 font-bold px-1.5 py-0.2 rounded">1 Soru</span>
                 </button>
                 <!-- Tam Sayı Problemleri 10 Soru -->
                 <button onclick="setCategory('tamsayi10')" id="cat-tamsayi10" class="cat-btn w-full text-left p-2.5 rounded-xl font-medium text-xs transition-all border border-slate-200 hover:border-slate-300 bg-white text-slate-700 flex items-center justify-between">
@@ -120,10 +145,10 @@
               </div>
             </div>
 
-            <!-- TEMA 2: RASYONEL SAYILARDA SIRALAMA (11. SORU) -->
+            <!-- TEMA 3: RASYONEL SAYILARDA SIRALAMA (11. SORU) -->
             <div>
               <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-700 block mb-1">
-                TEMA 2: RASYONEL SAYILARDA SIRALAMA
+                TEMA 3: RASYONEL SAYILARDA SIRALAMA
               </span>
               <div class="space-y-1">
                 <!-- 11. Soru -->
@@ -148,7 +173,7 @@
             <!-- TEMA 3: ? / PAYDA FORMATINDAKİ SORULAR (7. SORU) -->
             <div>
               <span class="text-[10px] font-bold uppercase tracking-wider text-amber-800 block mb-1">
-                TEMA 3: ? / PAYDA SORULARI
+                TEMA 4: ? / PAYDA SORULARI
               </span>
               <div class="space-y-1">
                 <!-- 7. Soru -->
@@ -173,7 +198,7 @@
             <!-- TEMA 4: SONLU MU DEVİRLİ Mİ? (5. SORU) -->
             <div>
               <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-800 block mb-1">
-                TEMA 4: SONLU MU DEVİRLİ Mİ? (2 VE 5 KURALI)
+                TEMA 5: SONLU MU DEVİRLİ Mİ? (2 VE 5 KURALI)
               </span>
               <div class="space-y-1">
                 <button onclick="setCategory('soru5')" id="cat-soru5" class="cat-btn w-full text-left p-2.5 rounded-xl font-medium text-xs transition-all border border-slate-200 hover:border-slate-300 bg-white text-slate-700 flex items-center justify-between">
@@ -186,10 +211,10 @@
               </div>
             </div>
 
-            <!-- TEMA 5: DEVİRLİ SAYIYI KESRE ÇEVİRME -->
+            <!-- TEMA 6: DEVİRLİ SAYIYI KESRE ÇEVİRME -->
             <div>
               <span class="text-[10px] font-bold uppercase tracking-wider text-purple-800 block mb-1">
-                TEMA 5: DEVİRLİ SAYIYI KESRE ÇEVİRME
+                TEMA 6: DEVİRLİ SAYIYI KESRE ÇEVİRME
               </span>
               <div class="space-y-1">
                 <button onclick="setCategory('devirli9')" id="cat-devirli9" class="cat-btn w-full text-left p-2.5 rounded-xl font-medium text-xs transition-all border border-slate-200 hover:border-slate-300 bg-white text-slate-700 flex items-center justify-between">
@@ -333,6 +358,289 @@
   <!-- JAVASCRIPT ÇALIŞMA MOTORU -->
   <script>
     const DB = {
+      // TEMA 1: 18. SORU (KARTLAR VE ÇARPMA ÖZELLİKLERİ - YENİ)
+      soru18: {
+        title: "18. Soru (Kartlar ve Çarpma Özellikleri)",
+        badge: "1 Soru",
+        items: [
+          {
+            id: "s18-1",
+            soruNo: "18. Soru",
+            baslik: "18. Soru: Kartların Arka Yüzleri ve Çarpma İşlemi Özellikleri",
+            kesirGosterim: "Arka Yüzler Çarpımı",
+            soruKoku: `
+              <div class="space-y-4 text-left">
+                <div class="bg-blue-950/80 p-4 rounded-xl border border-blue-800 text-slate-100 leading-relaxed text-xs">
+                  <p class="mb-2">Bir matematik oyununda, her iki yüzünde de birer rasyonel sayı yazılı olan <strong>5 kart</strong> kullanılmaktadır.</p>
+                  <p class="mb-3">Her kartın ön ve arka yüzünde yazılı olan sayıların çarpımı, <strong>çarpma işleminin etkisiz elemanına</strong> eşittir.</p>
+                  <p class="text-indigo-200 text-[11px] font-semibold mb-2">Bu kartların ön yüzlerinde yazılı olan sayılar aşağıda verilmiştir:</p>
+                  
+                  <!-- 5 Kart Görsel Alanı -->
+                  <div class="grid grid-cols-5 gap-2 sm:gap-3 my-3">
+                    <!-- Kart 1 -->
+                    <div class="bg-gradient-to-b from-blue-50 to-indigo-100 border-2 border-blue-400 rounded-xl p-2.5 sm:p-3 text-center shadow-md flex flex-col justify-center items-center">
+                      <span class="text-[9px] font-bold text-blue-900 uppercase block mb-1">Kart 1</span>
+                      <div class="text-slate-900 font-extrabold text-xs sm:text-sm font-mono">-2/3</div>
+                    </div>
+                    <!-- Kart 2 -->
+                    <div class="bg-gradient-to-b from-blue-50 to-indigo-100 border-2 border-blue-400 rounded-xl p-2.5 sm:p-3 text-center shadow-md flex flex-col justify-center items-center">
+                      <span class="text-[9px] font-bold text-blue-900 uppercase block mb-1">Kart 2</span>
+                      <div class="text-slate-900 font-extrabold text-xs sm:text-sm font-mono">4/5</div>
+                    </div>
+                    <!-- Kart 3 -->
+                    <div class="bg-gradient-to-b from-blue-50 to-indigo-100 border-2 border-blue-400 rounded-xl p-2.5 sm:p-3 text-center shadow-md flex flex-col justify-center items-center">
+                      <span class="text-[9px] font-bold text-blue-900 uppercase block mb-1">Kart 3</span>
+                      <div class="text-slate-900 font-extrabold text-xs sm:text-sm font-mono">-3/2</div>
+                    </div>
+                    <!-- Kart 4 -->
+                    <div class="bg-gradient-to-b from-blue-50 to-indigo-100 border-2 border-blue-400 rounded-xl p-2.5 sm:p-3 text-center shadow-md flex flex-col justify-center items-center">
+                      <span class="text-[9px] font-bold text-blue-900 uppercase block mb-1">Kart 4</span>
+                      <div class="text-slate-900 font-extrabold text-xs sm:text-sm font-mono">5/4</div>
+                    </div>
+                    <!-- Kart 5 -->
+                    <div class="bg-gradient-to-b from-blue-50 to-indigo-100 border-2 border-blue-400 rounded-xl p-2.5 sm:p-3 text-center shadow-md flex flex-col justify-center items-center">
+                      <span class="text-[9px] font-bold text-blue-900 uppercase block mb-1">Kart 5</span>
+                      <div class="text-slate-900 font-extrabold text-xs sm:text-sm font-mono">-7</div>
+                    </div>
+                  </div>
+
+                  <div class="border-t border-blue-800/80 pt-2.5 mt-2">
+                    <p class="font-bold text-amber-300">Kartların arka yüzlerinde yazılı olan rasyonel sayıların çarpımını bulunuz.</p>
+                    <p class="text-slate-200 mt-1">Çarpma işlemini daha kolay yapabilmek için işlem özelliklerinden hangilerini kullanabileceğinizi açıklayınız.</p>
+                  </div>
+                </div>
+              </div>
+            `,
+            ipucu: "Çarpma işleminin etkisiz elemanı 1'dir. İki sayının çarpımı 1 ise birbirinin çarpmaya göre tersidir. Değişme ve birleşme özellikleriyle kolayca gruplanır.",
+            tag: "ARKA YÜZLER ÇARPIMI: -1/7",
+            sonuc: "Cevap: -1/7",
+            sonucEk: "Kullanılan Özellikler: Ters Eleman, Değişme, Birleşme ve Etkisiz Eleman Özellikleri",
+            adimlar: `
+              <!-- 1. ADIM -->
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="text-[11px] font-bold uppercase tracking-wider text-indigo-900">1. Adım: Etkisiz Eleman ve Çarpmaya Göre Ters Eleman Özelliği</span>
+                  <span class="text-[10px] bg-indigo-100 text-indigo-800 px-2 py-0.5 rounded font-bold">Kural</span>
+                </div>
+                <p class="text-xs text-slate-700 leading-relaxed">
+                  • Çarpma işleminin <strong>etkisiz elemanı 1</strong>'dir.<br>
+                  • Ön ve arka yüzdeki sayıların çarpımı 1 olduğuna göre; arka yüzdeki sayılar, ön yüzdeki sayıların <strong>çarpmaya göre tersidir</strong>.<br>
+                  • <em>7. Sınıf Kuralı:</em> Bir rasyonel sayının çarpmaya göre tersi bulunurken <strong>pay ve payda yer değiştirir, sayının işareti aynen korunur</strong>.
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-5 gap-2 pt-1 font-mono text-xs">
+                  <div class="p-2 bg-white rounded border border-slate-200 text-center">
+                    <span class="text-[10px] text-slate-400 block font-sans">Kart 1</span>
+                    -2/3 → <strong class="text-indigo-700">-3/2</strong>
+                  </div>
+                  <div class="p-2 bg-white rounded border border-slate-200 text-center">
+                    <span class="text-[10px] text-slate-400 block font-sans">Kart 2</span>
+                    4/5 → <strong class="text-indigo-700">5/4</strong>
+                  </div>
+                  <div class="p-2 bg-white rounded border border-slate-200 text-center">
+                    <span class="text-[10px] text-slate-400 block font-sans">Kart 3</span>
+                    -3/2 → <strong class="text-indigo-700">-2/3</strong>
+                  </div>
+                  <div class="p-2 bg-white rounded border border-slate-200 text-center">
+                    <span class="text-[10px] text-slate-400 block font-sans">Kart 4</span>
+                    5/4 → <strong class="text-indigo-700">4/5</strong>
+                  </div>
+                  <div class="p-2 bg-white rounded border border-slate-200 text-center">
+                    <span class="text-[10px] text-slate-400 block font-sans">Kart 5</span>
+                    -7 = -7/1 → <strong class="text-indigo-700">-1/7</strong>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 2. ADIM -->
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="text-[11px] font-bold uppercase tracking-wider text-blue-900">2. Adım: Arka Yüzdeki Sayıları Çarpma İşlemi Olarak Yazma</span>
+                  <span class="text-[10px] bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-bold">İşlem</span>
+                </div>
+                <div class="p-2.5 bg-white rounded-lg border border-slate-200 text-center font-mono text-xs sm:text-sm font-bold text-slate-900">
+                  (-3/2) · (5/4) · (-2/3) · (4/5) · (-1/7)
+                </div>
+              </div>
+
+              <!-- 3. ADIM -->
+              <div class="p-3.5 rounded-xl bg-emerald-50 border border-emerald-200 space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-900">3. Adım: Kolay Çarpma İçin İşlem Özelliklerini Kullanma</span>
+                  <span class="text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold">Özellikler</span>
+                </div>
+                <div class="space-y-2 text-xs text-slate-700 leading-relaxed">
+                  <div class="p-2 bg-white rounded border border-emerald-100">
+                    <strong class="text-emerald-900 block font-sans">1) Değişme Özelliği:</strong>
+                    Çarpma işleminde çarpanların sırası değişse de çarpım değişmez. Birbirini 1 yapan (birbirinin çarpmaya göre tersi olan) kesirleri yan yana getirelim:<br>
+                    <span class="font-mono text-emerald-800 font-bold block mt-1 text-center">(-3/2) · (-2/3) · (5/4) · (4/5) · (-1/7)</span>
+                  </div>
+                  <div class="p-2 bg-white rounded border border-emerald-100">
+                    <strong class="text-emerald-900 block font-sans">2) Birleşme Özelliği:</strong>
+                    Çarpanları köşeli parantez ile ikili ikili gruplayalım:<br>
+                    <span class="font-mono text-emerald-800 font-bold block mt-1 text-center">[ (-3/2) · (-2/3) ] · [ (5/4) · (4/5) ] · (-1/7)</span>
+                  </div>
+                  <div class="p-2 bg-white rounded border border-emerald-100">
+                    <strong class="text-emerald-900 block font-sans">3) Ters Eleman Özelliği:</strong>
+                    Bir rasyonel sayı ile çarpmaya göre tersinin çarpımı 1'dir:<br>
+                    • [ (-3/2) · (-2/3) ] = <strong>+1</strong><br>
+                    • [ (5/4) · (4/5) ] = <strong>+1</strong><br>
+                    İşlemimiz şuna dönüştü:<br>
+                    <span class="font-mono text-emerald-800 font-bold block mt-1 text-center">[ 1 ] · [ 1 ] · (-1/7)</span>
+                  </div>
+                  <div class="p-2 bg-white rounded border border-emerald-100">
+                    <strong class="text-emerald-900 block font-sans">4) Etkisiz Eleman Özelliği:</strong>
+                    1 sayısı çarpma işleminde sonucu değiştirmez:<br>
+                    <span class="font-mono text-emerald-900 font-extrabold text-sm block mt-1 text-center">1 · 1 · (-1/7) = -1/7</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 4. ADIM: ZEKİCE ALTERNATİF YOL -->
+              <div class="p-3.5 rounded-xl bg-amber-50 border border-amber-200 space-y-1.5">
+                <span class="text-[11px] font-bold uppercase tracking-wider text-amber-900 block">💡 Zekice Alternatif Yol (Tüm Kartlar Analizi)</span>
+                <p class="text-xs text-amber-950 leading-relaxed">
+                  Her kart için (Ön Yüz) · (Arka Yüz) = 1'dir.<br>
+                  O halde 5 kartın tamamı için:<br>
+                  <strong>(Ön Yüzlerin Çarpımı) · (Arka Yüzlerin Çarpımı) = 1 · 1 · 1 · 1 · 1 = 1</strong><br>
+                  Ön yüzlerin çarpımı: (-2/3) · (4/5) · (-3/2) · (5/4) · (-7) = 1 · 1 · (-7) = <strong>-7</strong>'dir.<br>
+                  (-7) · (Arka Yüzler Çarpımı) = 1 olduğuna göre:<br>
+                  <strong>Arka Yüzler Çarpımı = 1 ÷ (-7) = -1/7</strong> olur!
+                </p>
+              </div>
+            `
+          }
+        ]
+      },
+
+      // TEMA 1: 10 ÇÖZÜMLÜ ÇARPMA VE TERS ELEMAN PROBLEMİ
+      carpma10: {
+        title: "10 Çözümlü Çarpma ve Ters Eleman Problemi",
+        badge: "10 Soru",
+        items: [
+          {
+            id: "cp-1",
+            soruNo: "Örnek 1",
+            baslik: "Örnek 1: 5 Kartın Arka Yüzleri Çarpımı",
+            kesirGosterim: "3/7, -5/8, 7/3, -8/5, 1/9",
+            soruKoku: "<p class='text-xs text-slate-300'>Ön yüzlerinde 3/7, -5/8, 7/3, -8/5 ve 1/9 yazan 5 kartın her birinin ön ve arka yüzündeki sayıların çarpımı 1'dir. Bu 5 kartın arka yüzlerindeki sayıların çarpımı kaçtır?</p>",
+            ipucu: "Arka yüzler ön yüzlerin tersidir. Tersleri çiftler halinde 1 eder: (7/3 · 3/7) · [(-8/5) · (-5/8)] · 9",
+            tag: "SONUÇ: 9",
+            sonuc: "Cevap: 9",
+            sonucEk: "1 · 1 · 9 = 9",
+            adimlar: "<div class='p-3 bg-slate-50 rounded-xl text-slate-700 text-xs space-y-1.5'><p>Arka yüzdeki sayılar: 7/3, -8/5, 3/7, -5/8 ve 9'dur.</p><p>Değişme ve birleşme özellikleriyle eşleştirelim: [ (7/3) · (3/7) ] · [ (-8/5) · (-5/8) ] · 9</p><p>Ters eleman kuralından [1] · [1] · 9 = <strong>9</strong> bulunur.</p></div>"
+          },
+          {
+            id: "cp-2",
+            soruNo: "Örnek 2",
+            baslik: "Örnek 2: Tam Sayılı Kesrin Çarpmaya Göre Tersi",
+            kesirGosterim: "-2 tam 1/3",
+            soruKoku: "<p class='text-xs text-slate-300'>-2 tam 1/3 rasyonel sayısının <strong>çarpmaya göre tersi</strong> ile <strong>toplama işlemine göre tersinin</strong> çarpımı kaçtır?</p>",
+            ipucu: "-2 tam 1/3 = -7/3. Çarpmaya göre tersi -3/7, toplama göre tersi +7/3.",
+            tag: "SONUÇ: -1",
+            sonuc: "Cevap: -1",
+            sonucEk: "(-3/7) · (+7/3) = -1",
+            adimlar: "<div class='p-3 bg-slate-50 rounded-xl text-slate-700 text-xs space-y-1.5'><p>1. Adım: Kesri bileşik kesre çevirelim: -2 tam 1/3 = -(2·3 + 1)/3 = <strong>-7/3</strong>.</p><p>2. Adım: Çarpmaya göre tersi: Pay ve payda yer değiştirir, işaret aynı kalır: <strong>-3/7</strong>.</p><p>3. Adım: Toplama işlemine göre tersi: Yalnızca işareti değişir: <strong>+7/3</strong>.</p><p>4. Adım: Çarpımları: (-3/7) · (+7/3) = -(21/21) = <strong>-1</strong>'dir.</p></div>"
+          },
+          {
+            id: "cp-3",
+            soruNo: "Örnek 3",
+            baslik: "Örnek 3: Değişme ve Birleşme Özelliği ile Kolay Çarpma",
+            kesirGosterim: "(-4/9) · (11/17) · (-9/4) · (17/11) · (-3/5)",
+            soruKoku: "<p class='text-xs text-slate-300'>(-4/9) · (11/17) · (-9/4) · (17/11) · (-3/5) işleminin sonucunu işlem özelliklerini kullanarak bulunuz.</p>",
+            ipucu: "Değişme özelliğiyle birbirini 1 yapan ters kesirleri yan yana getirip paranteze alınız.",
+            tag: "SONUÇ: -3/5",
+            sonuc: "Cevap: -3/5",
+            sonucEk: "[1] · [1] · (-3/5) = -3/5",
+            adimlar: "<div class='p-3 bg-slate-50 rounded-xl text-slate-700 text-xs space-y-1.5'><p>Değişme ve birleşme özellikleriyle gruplayalım:</p><p class='font-mono bg-white p-2 rounded border text-center'>[ (-4/9) · (-9/4) ] · [ (11/17) · (17/11) ] · (-3/5)</p><p>Ters eleman özelliğinden: [ 1 ] · [ 1 ] · (-3/5) = <strong>-3/5</strong> elde edilir.</p></div>"
+          },
+          {
+            id: "cp-4",
+            soruNo: "Örnek 4",
+            baslik: "Örnek 4: Çarpma İşleminde Yutan Eleman (0)",
+            kesirGosterim: "(-5/2) · (7/4) · 0 · (-2/5) · 12",
+            soruKoku: "<p class='text-xs text-slate-300'>Bir torbadan çekilen 5 kartta sırasıyla -5/2, 7/4, 0, -2/5 ve 12 sayıları yazmaktadır. Bu sayıların çarpımı kaçtır? Hangi özellik hesap yapmadan sonucu bulmamızı sağlar?</p>",
+            ipucu: "Çarpma işleminde 0 sayısı yutan elemandır.",
+            tag: "SONUÇ: 0",
+            sonuc: "Cevap: 0 (Yutan Eleman)",
+            sonucEk: "Bir çarpan 0 ise sonuç daima 0'dır.",
+            adimlar: "<div class='p-3 bg-slate-50 rounded-xl text-slate-700 text-xs space-y-1.5'><p>Çarpma işleminin <strong>yutan elemanı 0</strong>'dır.</p><p>İşlemdeki çarpanlardan biri 0 olduğu için diğer çarpanların büyüklüğü ne olursa olsun çarpımın sonucu doğrudan <strong>0</strong> olur.</p></div>"
+          },
+          {
+            id: "cp-5",
+            soruNo: "Örnek 5",
+            baslik: "Örnek 5: Ters Eleman ve Etkisiz Eleman Toplamı",
+            kesirGosterim: "Tersi -5/12 Olan Sayı",
+            soruKoku: "<p class='text-xs text-slate-300'>Bir A rasyonel sayısının çarpmaya göre tersi -5/12'dir. Buna göre A sayısı ile çarpma işleminin etkisiz elemanının toplamı kaçtır?</p>",
+            ipucu: "Tersinin tersi kendisidir: A = -12/5. Etkisiz eleman = 1.",
+            tag: "SONUÇ: -7/5",
+            sonuc: "Cevap: -7/5 (veya -1 tam 2/5)",
+            sonucEk: "(-12/5) + 1 = -7/5",
+            adimlar: "<div class='p-3 bg-slate-50 rounded-xl text-slate-700 text-xs space-y-1.5'><p>1. Bir sayının çarpmaya göre tersinin tersi sayının kendisine eşittir. Bu yüzden <strong>A = -12/5</strong>'tir.</p><p>2. Çarpma işleminin etkisiz elemanı <strong>1</strong>'dir.</p><p>3. Toplam: (-12/5) + 1 = (-12/5) + (5/5) = <strong>-7/5</strong> bulunur.</p></div>"
+          },
+          {
+            id: "cp-6",
+            soruNo: "Örnek 6",
+            baslik: "Örnek 6: Çarpmanın Toplama Üzerine Dağılma Özelliği",
+            kesirGosterim: "(3/8) · (16/9 + 24/9)",
+            soruKoku: "<p class='text-xs text-slate-300'>(3/8) · (16/9 + 24/9) işlemini çarpmanın toplama işlemi üzerine dağılma özelliğini kullanarak çözünüz.</p>",
+            ipucu: "(3/8 · 16/9) + (3/8 · 24/9) şeklinde açılır.",
+            tag: "SONUÇ: 5/3",
+            sonuc: "Cevap: 5/3 (veya 1 tam 2/3)",
+            sonucEk: "2/3 + 1 = 5/3",
+            adimlar: "<div class='p-3 bg-slate-50 rounded-xl text-slate-700 text-xs space-y-1.5'><p>Dağılma özelliği uygulayalım: (3/8 · 16/9) + (3/8 · 24/9)</p><p>1. terim: (3·16)/(8·9) = 48/72 = <strong>2/3</strong></p><p>2. terim: (3·24)/(8·9) = 72/72 = <strong>1</strong></p><p>Toplam: 2/3 + 1 = 2/3 + 3/3 = <strong>5/3</strong> bulunur.</p></div>"
+          },
+          {
+            id: "cp-7",
+            soruNo: "Örnek 7",
+            baslik: "Örnek 7: 4 Kartın Arka Yüzleri Toplamı",
+            kesirGosterim: "-4, 2/5, -1/4, 5/2",
+            soruKoku: "<p class='text-xs text-slate-300'>4 kartın her birinin ön ve arka yüzündeki sayıların çarpımı 1'dir. Kartların ön yüzlerinde -4, 2/5, -1/4 ve 5/2 yazmaktadır. Bu kartların arka yüzlerindeki sayıların <strong>toplamı</strong> kaçtır?</p>",
+            ipucu: "Arka yüzler ön yüzlerin tersleridir: -1/4, 5/2, -4, 2/5.",
+            tag: "SONUÇ: -27/20",
+            sonuc: "Cevap: -27/20 (veya -1 tam 7/20)",
+            sonucEk: "-85/20 + 58/20 = -27/20",
+            adimlar: "<div class='p-3 bg-slate-50 rounded-xl text-slate-700 text-xs space-y-1.5'><p>Arka yüzler: -1/4, 5/2, -4 ve 2/5'tir.</p><p>Gruplayarak payda eşitleyelim (payda 20):</p><p>(-1/4 - 4) = -17/4 = -85/20</p><p>(5/2 + 2/5) = 25/10 + 4/10 = 29/10 = 58/20</p><p>Toplam: (-85/20) + (58/20) = <strong>-27/20</strong>'dir.</p></div>"
+          },
+          {
+            id: "cp-8",
+            soruNo: "Örnek 8",
+            baslik: "Örnek 8: Zincirleme Sadeleşme (Teleskopik Çarpım)",
+            kesirGosterim: "(1 - 1/2) · (1 - 1/3) · ... · (1 - 1/10)",
+            soruKoku: "<p class='text-xs text-slate-300'>(1 - 1/2) · (1 - 1/3) · (1 - 1/4) · ... · (1 - 1/10) işleminin sonucu kaçtır?</p>",
+            ipucu: "Parantezlerin içini yapınız: (1/2) · (2/3) · (3/4) ... (9/10). Çapraz sadeleşmeyi fark ediniz.",
+            tag: "SONUÇ: 1/10",
+            sonuc: "Cevap: 1/10",
+            sonucEk: "Tüm ara terimler sadeleşir, geriye 1/10 kalır.",
+            adimlar: "<div class='p-3 bg-slate-50 rounded-xl text-slate-700 text-xs space-y-1.5'><p>Çıkarma işlemlerini yapalım:</p><p class='font-mono bg-white p-2 rounded border text-center'>(1/2) · (2/3) · (3/4) · (4/5) · ... · (9/10)</p><p>Birinci kesrin paydası ile sonraki kesrin payı sadeleşir (2'ler, 3'ler, 4'ler... 9'lar sadeleşir).</p><p>En başta paydaki <strong>1</strong>, en sonda paydadaki <strong>10</strong> kalır. Sonuç: <strong>1/10</strong>'dur.</p></div>"
+          },
+          {
+            id: "cp-9",
+            soruNo: "Örnek 9",
+            baslik: "Örnek 9: Çarpımı -1 Olan Kartlar",
+            kesirGosterim: "Ön · Arka = -1 (2/3, -4/5, 6)",
+            soruKoku: "<p class='text-xs text-slate-300'>3 kartın her birinin ön ve arka yüzündeki sayıların çarpımı -1'e eşittir. Kartların ön yüzlerinde 2/3, -4/5 ve 6 yazdığına göre, bu kartların arka yüzlerindeki sayıların çarpımı kaçtır?</p>",
+            ipucu: "Ön · Arka = -1 ise Arka = -1 / Ön. İşaretlere dikkat ediniz.",
+            tag: "SONUÇ: 5/16",
+            sonuc: "Cevap: 5/16",
+            sonucEk: "(-3/2) · (+5/4) · (-1/6) = +5/16",
+            adimlar: "<div class='p-3 bg-slate-50 rounded-xl text-slate-700 text-xs space-y-1.5'><p>1. Kartın arkası: -1 ÷ (2/3) = <strong>-3/2</strong></p><p>2. Kartın arkası: -1 ÷ (-4/5) = <strong>+5/4</strong></p><p>3. Kartın arkası: -1 ÷ 6 = <strong>-1/6</strong></p><p>Arka yüzler çarpımı: (-3/2) · (+5/4) · (-1/6) = +(15 / 48) = <strong>5/16</strong> bulunur.</p></div>"
+          },
+          {
+            id: "cp-10",
+            soruNo: "Örnek 10",
+            baslik: "Örnek 10: Ön Yüzler Çarpımı Verilen 5 Kart",
+            kesirGosterim: "Ön Yüzler Çarpımı: 3/4",
+            soruKoku: "<p class='text-xs text-slate-300'>Bir oyundaki 5 kartın her birinin ön ve arka yüzündeki sayıların çarpımı 1'dir. Bu 5 kartın ön yüzlerindeki sayıların çarpımı 3/4 olduğuna göre, arka yüzlerindeki sayıların çarpımı kaçtır?</p>",
+            ipucu: "(Ön Çarpımı) · (Arka Çarpımı) = 1. Arka Çarpımı = 1 ÷ (Ön Çarpımı).",
+            tag: "SONUÇ: 4/3",
+            sonuc: "Cevap: 4/3 (veya 1 tam 1/3)",
+            sonucEk: "1 ÷ (3/4) = 4/3",
+            adimlar: "<div class='p-3 bg-slate-50 rounded-xl text-slate-700 text-xs space-y-1.5'><p>Her kart için Ön · Arka = 1 olduğuna göre, tüm kartlar için:</p><p class='font-mono bg-white p-2 rounded border text-center'>(Ön Yüzler Çarpımı) · (Arka Yüzler Çarpımı) = 1 · 1 · 1 · 1 · 1 = 1</p><p>(3/4) · (Arka Yüzler Çarpımı) = 1</p><p>Arka Yüzler Çarpımı = 1 ÷ (3/4) = <strong>4/3</strong> bulunur.</p></div>"
+          }
+        ]
+      },
+
+
       // TEMA 1: YENİ YARIŞMA PROBLEMİ (-104 PUAN)
       soruYarisma: {
         title: "Yarışma Problemi (-104 Puan Sorusu)",
@@ -717,7 +1025,7 @@
         ]
       },
 
-      // TEMA 5: DEVİRLİ SAYIYI KESRE ÇEVİRME
+      // TEMA 6: DEVİRLİ SAYIYI KESRE ÇEVİRME
       devirli9: {
         title: "9 Çözümlü Devirli Kesir Sorusu",
         badge: "9 Soru",
@@ -750,7 +1058,7 @@
       }
     };
 
-    let aktifKategori = 'soruYarisma';
+    let aktifKategori = 'soru18';
     let aktifIndex = 0;
     let cozumAcik = false;
 
@@ -886,7 +1194,7 @@
     }
 
     window.addEventListener('DOMContentLoaded', () => {
-      setCategory('soruYarisma');
+      setCategory('soru18');
     });
   </script>
 </body>
