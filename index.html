@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matematik İnteraktif Ders Portalı: 7. Sınıf Tam Sayılar ve Rasyonel Sayılar</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- KaTeX CSS ve JS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['Outfit', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .bar {
+      text-decoration: overline;
+      text-decoration-thickness: 1.5px;
+      font-weight: 600;
+    }
+    .katex-display {
+      margin: 0.25rem 0 !important;
+    }
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans antialiased text-sm h-screen flex flex-col overflow-hidden">
+
+  <!-- Üst Başlık Barı -->
+  <header class="bg-indigo-950 text-white px-4 sm:px-6 py-2.5 flex items-center justify-between border-b border-indigo-900 flex-shrink-0 z-20 shadow-md">
+    <div class="flex items-center gap-2.5">
+      <span class="w-7 h-7 rounded-lg bg-amber-400 text-slate-950 flex items-center justify-center font-bold text-xs shadow-inner">
+        🎯
+      </span>
+      <div>
+        <h1 class="text-sm sm:text-base font-bold font-display leading-tight">7. Sınıf Matematik İnteraktif Çalışma Masası</h1>
+        <p class="text-[10px] text-indigo-300">Tam Sayı Problemleri (-104 Puan) • Sıralama • Sonlu/Devirli • 50+ Çözümlü Örnek</p>
+      </div>
+    </div>
+    <div class="flex items-center gap-2">
+      <span class="text-[11px] text-indigo-300 hidden sm:inline">Konu:</span>
+      <span id="aktifBaslikRozet" class="px-2.5 py-0.5 rounded-full font-bold bg-amber-400 text-slate-950 text-[11px]">
+        Yarışma Problemi (-104 Puan)
+      </span>
+    </div>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- 3 SÜTUNLU ANA ÇALIŞMA ALANI -->
+  <!-- ========================================================================= -->
+  <div class="flex-1 grid grid-cols-1 md:grid-cols-12 overflow-hidden">
+
+    <!-- ========================================================= -->
+    <!-- 1. SÜTUN: SOL - TÜM ANA BAŞLIKLAR (Genişlik: 3 / 12) -->
+    <!-- ========================================================= -->
+    <nav class="md:col-span-3 bg-white border-r border-slate-200 p-3 sm:p-4 flex flex-col justify-between overflow-y-auto">
+      <div class="space-y-4">
+        
+        <div>
+          <div class="flex items-center justify-between mb-2 pb-1 border-b border-slate-100">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-900">
+              1. SÜTUN: TÜM KONU BAŞLIKLARI
+            </span>
+            <span class="text-[10px] text-slate-400">5 Ana Tema</span>
+          </div>
+
+          <div class="space-y-3">
+            
+            <!-- TEMA 1: TAM SAYILARLA İŞLEMLER (YARIŞMA PUANI SORUSU - YENİ) -->
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-blue-700 block mb-1">
+                TEMA 1: TAM SAYI PROBLEMLERİ (YENİ)
+              </span>
+              <div class="space-y-1">
+                <!-- Yeni Soru: -104 Puan Problemi -->
+                <button onclick="setCategory('soruYarisma')" id="cat-soruYarisma" class="cat-btn w-full text-left p-2.5 rounded-xl font-medium text-xs transition-all border bg-indigo-50 border-indigo-300 shadow-sm text-indigo-950 flex items-center justify-between">
+                  <div>
+                    <span class="font-bold text-slate-900 block">⭐ Yarışma Problemi (-104 Puan)</span>
+                    <span class="text-[10px] text-slate-500">Her yanlış -8 puan, toplam -104 puan</span>
+                  </div>
+                  <span class="text-[10px] bg-amber-400 text-slate-900 font-bold px-1.5 py-0.2 rounded">Yeni Soru</span>
+                </button>
+                <!-- Tam Sayı Problemleri 10 Soru -->
+                <button onclick="setCategory('tamsayi10')" id="cat-tamsayi10" class="cat-btn w-full text-left p-2.5 rounded-xl font-medium text-xs transition-all border border-slate-200 hover:border-slate-300 bg-white text-slate-700 flex items-center justify-between">
+                  <div>
+                    <span class="font-bold text-slate-900 block">📝 10 Çözümlü Tam Sayı Problemi</span>
+                    <span class="text-[10px] text-slate-500">Sıcaklık, asansör, borç, dalış...</span>
+                  </div>
+                  <span class="text-[10px] bg-blue-100 text-blue-800 font-bold px-1.5 py-0.2 rounded">10 Örnek</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- TEMA 2: RASYONEL SAYILARDA SIRALAMA (11. SORU) -->
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-700 block mb-1">
+                TEMA 2: RASYONEL SAYILARDA SIRALAMA
+              </span>
+              <div class="space-y-1">
+                <!-- 11. Soru -->
+                <button onclick="setCategory('soru11')" id="cat-soru11" class="cat-btn w-full text-left p-2.5 rounded-xl font-medium text-xs transition-all border border-slate-200 hover:border-slate-300 bg-white text-slate-700 flex items-center justify-between">
+                  <div>
+                    <span class="font-bold text-slate-900 block">⭐ 11. Soru (Tahta ve Defter)</span>
+                    <span class="text-[10px] text-slate-500">-45/44, -39/38, -50/49</span>
+                  </div>
+                  <span class="text-[10px] bg-indigo-100 text-indigo-800 font-bold px-1.5 py-0.2 rounded">Sıralama</span>
+                </button>
+                <!-- Sıralama 10 Soru -->
+                <button onclick="setCategory('siralama10')" id="cat-siralama10" class="cat-btn w-full text-left p-2.5 rounded-xl font-medium text-xs transition-all border border-slate-200 hover:border-slate-300 bg-white text-slate-700 flex items-center justify-between">
+                  <div>
+                    <span class="font-bold text-slate-900 block">📝 10 Çözümlü Sıralama Sorusu</span>
+                    <span class="text-[10px] text-slate-500">Bileşik, basit, negatif sıralama</span>
+                  </div>
+                  <span class="text-[10px] bg-indigo-100 text-indigo-800 font-bold px-1.5 py-0.2 rounded">10 Örnek</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- TEMA 3: ? / PAYDA FORMATINDAKİ SORULAR (7. SORU) -->
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-amber-800 block mb-1">
+                TEMA 3: ? / PAYDA SORULARI
+              </span>
+              <div class="space-y-1">
+                <!-- 7. Soru -->
+                <button onclick="setCategory('soru7')" id="cat-soru7" class="cat-btn w-full text-left p-2.5 rounded-xl font-medium text-xs transition-all border border-slate-200 hover:border-slate-300 bg-white text-slate-700 flex items-center justify-between">
+                  <div>
+                    <span class="font-bold text-slate-900 block">⭐ 7. Soru (? / 35 Analizi)</span>
+                    <span class="text-[10px] text-slate-500">Sonlu olması için 7'nin katı kuralı</span>
+                  </div>
+                  <span class="text-[10px] bg-amber-100 text-amber-900 font-bold px-1.5 py-0.2 rounded">7'nin katı</span>
+                </button>
+                <!-- ? / Payda 10 Soru -->
+                <button onclick="setCategory('benzer10')" id="cat-benzer10" class="cat-btn w-full text-left p-2.5 rounded-xl font-medium text-xs transition-all border border-slate-200 hover:border-slate-300 bg-white text-slate-700 flex items-center justify-between">
+                  <div>
+                    <span class="font-bold text-slate-900 block">📝 10 Çözümlü ? Bulma Sorusu</span>
+                    <span class="text-[10px] text-slate-500">?/12, ?/15, ?/18, ?/55...</span>
+                  </div>
+                  <span class="text-[10px] bg-amber-100 text-amber-900 font-bold px-1.5 py-0.2 rounded">10 Örnek</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- TEMA 4: SONLU MU DEVİRLİ Mİ? (5. SORU) -->
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-800 block mb-1">
+                TEMA 4: SONLU MU DEVİRLİ Mİ? (2 VE 5 KURALI)
+              </span>
+              <div class="space-y-1">
+                <button onclick="setCategory('soru5')" id="cat-soru5" class="cat-btn w-full text-left p-2.5 rounded-xl font-medium text-xs transition-all border border-slate-200 hover:border-slate-300 bg-white text-slate-700 flex items-center justify-between">
+                  <div>
+                    <span class="font-bold text-slate-900 block">⭐ 5. Soru (Tablodaki 4 Sayı)</span>
+                    <span class="text-[10px] text-slate-500">7/20, -11/18, 15/24, 9/35</span>
+                  </div>
+                  <span class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.2 rounded">4 Sayı</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- TEMA 5: DEVİRLİ SAYIYI KESRE ÇEVİRME -->
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-purple-800 block mb-1">
+                TEMA 5: DEVİRLİ SAYIYI KESRE ÇEVİRME
+              </span>
+              <div class="space-y-1">
+                <button onclick="setCategory('devirli9')" id="cat-devirli9" class="cat-btn w-full text-left p-2.5 rounded-xl font-medium text-xs transition-all border border-slate-200 hover:border-slate-300 bg-white text-slate-700 flex items-center justify-between">
+                  <div>
+                    <span class="font-bold text-slate-900 block">📝 9 Çözümlü Devirli Kesir Sorusu</span>
+                    <span class="text-[10px] text-slate-500">0,27̄, 1,8̄, 0,42̄, 2,154̄...</span>
+                  </div>
+                  <span class="text-[10px] bg-purple-100 text-purple-800 font-bold px-1.5 py-0.2 rounded">9 Örnek</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-3 border-t border-slate-100 text-[10px] text-slate-400 text-center">
+        7. Sınıf Matematik Portalı • 2026
+      </div>
+    </nav>
+
+
+    <!-- ========================================================= -->
+    <!-- 2. SÜTUN: ORTA - ÖRNEKLER LİSTESİ (Genişlik: 4 / 12) -->
+    <!-- ========================================================= -->
+    <section class="md:col-span-4 bg-slate-50 border-r border-slate-200 p-3 sm:p-4 flex flex-col overflow-y-auto">
+      
+      <div class="pb-2 mb-2 border-b border-slate-200 flex-shrink-0">
+        <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-900 block">
+          2. SÜTUN: ÖRNEKLER LİSTESİ
+        </span>
+        <div class="flex items-center justify-between mt-0.5">
+          <h2 id="ortaSutunBaslik" class="text-xs font-bold text-slate-800 font-display">
+            Yarışma Problemi ve Benzer Sorular
+          </h2>
+          <span id="ortaSutunSayac" class="text-[10px] font-mono text-slate-500 bg-white px-2 py-0.5 rounded border border-slate-200">
+            1 Soru
+          </span>
+        </div>
+      </div>
+
+      <!-- Örnekler Listesi (JS Dolduracak) -->
+      <div id="orneklerListesi" class="space-y-1.5 flex-1 overflow-y-auto pr-1">
+        <!-- JS ile dolacak -->
+      </div>
+    </section>
+
+
+    <!-- ========================================================= -->
+    <!-- 3. SÜTUN: SAĞ - SORU VE ADIM ADIM ÇÖZÜM ALANI (Genişlik: 5 / 12) -->
+    <!-- ========================================================= -->
+    <main class="md:col-span-5 bg-white p-4 sm:p-6 overflow-y-auto flex flex-col justify-between">
+      
+      <div class="space-y-4">
+        
+        <!-- Soru Üst Başlığı -->
+        <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+          <div>
+            <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-600 block">
+              3. SÜTUN: SORU VE ÇÖZÜM ALANI
+            </span>
+            <h3 id="cozumBasligi" class="text-base sm:text-lg font-bold font-display text-slate-900 mt-0.5">
+              Soru İncelemesi
+            </h3>
+          </div>
+          <span id="soruSiraRozet" class="text-xs font-mono px-2 py-1 rounded bg-slate-100 text-slate-600 font-bold">
+            1 / 1
+          </span>
+        </div>
+
+        <!-- 1. BÖLÜM: SORU KUTUSU -->
+        <div id="soruKutusu" class="p-4 rounded-2xl bg-slate-900 text-white shadow-sm border border-slate-800">
+          <div class="text-[11px] font-bold text-amber-300 uppercase tracking-wider mb-2 flex items-center justify-between">
+            <span id="soruTipiEtiket">Soru Kökü</span>
+            <span class="text-[10px] text-slate-400 font-normal">Cevabı düşünün</span>
+          </div>
+
+          <div id="soruIcerik" class="py-1">
+            <!-- JS dolduracak -->
+          </div>
+        </div>
+
+        <!-- 2. BÖLÜM: ETKİLEŞİMLİ AÇ / GİZLE BUTONU -->
+        <div class="p-3.5 rounded-2xl bg-indigo-50/70 border border-indigo-200 text-center space-y-2">
+          <div class="text-xs font-bold text-indigo-950" id="soruEtkilesimBaslik">
+            Çözümü ve matematiksel gerekçesini görmek için tıklayın:
+          </div>
+
+          <div class="flex items-center justify-center pt-1">
+            <button onclick="toggleCozum()" id="btnToggleCozum" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold transition-all shadow-md flex items-center gap-2">
+              <span id="toggleIcon">👁️</span>
+              <span id="toggleText">Çözümü ve Matematiksel Gerekçeyi Aç</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 3. BÖLÜM: GİZLİ ÇÖZÜM PANELİ (Tıklayınca Açılır) -->
+        <div id="gizliCozumPaneli" class="hidden space-y-3 animate-fadeIn">
+          
+          <!-- Hüküm / Sonuç Rozeti -->
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between">
+            <div>
+              <span class="text-[10px] text-slate-400 uppercase font-bold tracking-wider block">Doğru Yanıt:</span>
+              <div id="cozumRozetMetni" class="text-sm sm:text-base font-bold font-display text-slate-900 mt-0.5"></div>
+            </div>
+            <div id="cozumRozetTag"></div>
+          </div>
+
+          <!-- Nihai Değer / Sonuç Kutusu -->
+          <div class="p-4 rounded-2xl bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white text-center">
+            <span class="text-[10px] uppercase font-bold text-indigo-300 tracking-wider">Cevap:</span>
+            <div id="nihaiSonucMetni" class="text-sm sm:text-lg font-mono font-bold text-amber-300 mt-1"></div>
+            <div id="nihaiSonucEk" class="text-[11px] text-slate-300 mt-1"></div>
+          </div>
+
+          <!-- Adım Adım Açıklama Kutuları -->
+          <div id="adimlarKutusu" class="space-y-2 text-xs">
+            <!-- JS dolduracak -->
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Sayfa Altındaki Önceki / Sonraki Butonları -->
+      <div class="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between">
+        <button onclick="navigateItem(-1)" id="btnPrev" class="px-3 py-1.5 rounded-lg border border-slate-200 hover:bg-slate-50 text-xs font-medium text-slate-600 transition-all flex items-center gap-1">
+          ← Önceki Soru
+        </button>
+        <span id="sayfaGostergesi" class="text-[11px] font-mono text-slate-400">1 / 1</span>
+        <button onclick="navigateItem(1)" id="btnNext" class="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold shadow-sm transition-all flex items-center gap-1">
+          Sonraki Soru →
+        </button>
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- JAVASCRIPT ÇALIŞMA MOTORU -->
+  <script>
+    const DB = {
+      // TEMA 1: YENİ YARIŞMA PROBLEMİ (-104 PUAN)
+      soruYarisma: {
+        title: "Yarışma Problemi (-104 Puan Sorusu)",
+        badge: "1 Soru",
+        items: [
+          {
+            id: "yar-1",
+            soruNo: "Görseldeki Soru",
+            baslik: "Yarışma Problemi: -104 Puan Alan Yarışmacı",
+            kesirGosterim: "-104 Puan / (-8)",
+            soruKoku: `
+              <div class="space-y-3 text-left">
+                <div class="bg-blue-950/80 p-3.5 rounded-xl border border-blue-800 text-slate-100 leading-relaxed text-xs">
+                  Bir yarışmada yarışmacılar <strong>0 puanla</strong> başlamakta ve her yanlış cevapta <strong>8 puan kaybetmektedir</strong>.<br><br>
+                  Cevapladığı tüm soruları yanlış yanıtlayan bir yarışmacı, yarışmayı <strong>-104 puanla</strong> tamamlamıştır.<br><br>
+                  <strong class="text-amber-300">Bu yarışmacının cevapladığı soru sayısını bulunuz.</strong>
+                </div>
+              </div>
+            `,
+            ipucu: "Her yanlış = -8 puan. Toplam = -104 puan. (-104) ÷ (-8) işlemi yapılır.",
+            tag: "13 SORU CEVAPLAMIŞTIR",
+            sonuc: "Cevap: 13 Soru",
+            sonucEk: "(-104) ÷ (-8) = +13 soru",
+            adimlar: `
+              <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                <span class="text-[10px] font-bold uppercase text-indigo-800 block">1. Adım: Verilenleri Matematiksel İfadeye Dökme</span>
+                <p class="text-slate-700 mt-1">
+                  • Başlangıç puanı = <strong>0</strong><br>
+                  • 1 yanlış cevap puan değişimi = <strong>-8 puan</strong> (8 puan kaybetmek)<br>
+                  • Toplam puan = <strong>-104 puan</strong><br>
+                  • Yarışmacı cevapladığı <strong>tüm soruları yanlış</strong> yapmıştır.
+                </p>
+              </div>
+
+              <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                <span class="text-[10px] font-bold uppercase text-emerald-800 block">2. Adım: Bölme İşlemi ve İşaret Kuralı</span>
+                <p class="text-slate-700 mt-1">
+                  Soru sayısını bulmak için toplam puanı, bir yanlış sorudan kaybedilen puana böleriz:<br>
+                  <strong class="text-sm font-mono text-indigo-950 block my-1 text-center bg-white p-2 rounded border">
+                    Soru Sayısı = (-104) ÷ (-8)
+                  </strong>
+                  <strong>Tam sayılarda bölme kuralı:</strong> Negatif bir sayının negatif bir sayıya bölümü <strong>POZİTİF</strong> olur: (-) ÷ (-) = (+)<br>
+                  104 ÷ 8 = <strong>13</strong>
+                </p>
+              </div>
+
+              <div class="p-3 rounded-xl bg-amber-50 border border-amber-200">
+                <span class="text-[10px] font-bold uppercase text-amber-900 block">3. Adım: Sağlama (Doğrulama)</span>
+                <p class="text-amber-950 mt-1">
+                  13 soru × (-8 puan) = <strong>-104 puan</strong>.<br>
+                  Başlangıç 0 olduğuna göre: 0 + (-104) = -104 puan tam olarak sağlanır!
+                </p>
+              </div>
+            `
+          }
+        ]
+      },
+
+      // TEMA 1: 10 ÇÖZÜMLÜ TAM SAYI PROBLEMİ
+      tamsayi10: {
+        title: "10 Çözümlü Tam Sayı Problemi",
+        badge: "10 Soru",
+        items: [
+          {
+            id: "ts-1",
+            soruNo: "Problem 1",
+            baslik: "Problem 1: Yanlış Cevap Cezası",
+            kesirGosterim: "-72 Puan / (-6)",
+            soruKoku: "<p class='text-xs text-slate-300'>Her yanlış cevapta 6 puan kaybedilen bir bilgi yarışmasında tüm soruları yanlış cevaplayan Ali, yarışmayı -72 puanla bitirmiştir. Ali kaç soru cevaplamıştır?</p>",
+            ipucu: "(-72) ÷ (-6) işlemi yapılır.",
+            tag: "12 SORU",
+            sonuc: "Cevap: 12 Soru",
+            sonucEk: "(-72) ÷ (-6) = +12",
+            adimlar: "<p class='p-3 bg-slate-50 rounded-xl text-slate-700'>(-72) ÷ (-6) = +12 soru. Negatifin negatife bölümü pozitiftir.</p>"
+          },
+          {
+            id: "ts-2",
+            soruNo: "Problem 2",
+            baslik: "Problem 2: Sıcaklık Düşüşü",
+            kesirGosterim: "-21°C / (-3°C)",
+            soruKoku: "<p class='text-xs text-slate-300'>Sıcaklığın her saatte 3°C düştüğü bir ilde, sıcaklık 0°C iken -21°C'ye ulaşması için kaç saat geçmelidir?</p>",
+            ipucu: "Toplam düşüş: -21°C. Saatlik düşüş: -3°C.",
+            tag: "7 SAAT",
+            sonuc: "Cevap: 7 Saat",
+            sonucEk: "(-21) ÷ (-3) = 7 saat",
+            adimlar: "<p class='p-3 bg-slate-50 rounded-xl text-slate-700'>(-21) ÷ (-3) = 7 saat geçmesi gerekir.</p>"
+          },
+          {
+            id: "ts-3",
+            soruNo: "Problem 3",
+            baslik: "Problem 3: Denizaltı Dalışı",
+            kesirGosterim: "-180 m / (-15 m)",
+            soruKoku: "<p class='text-xs text-slate-300'>Deniz seviyesinden (0 metre) harekete geçen bir denizaltı her dakikada 15 metre dalış yapmaktadır. Denizaltı -180 metre derinliğe kaç dakikada iner?</p>",
+            ipucu: "Dalış: dakikada -15 metre.",
+            tag: "12 DAKİKA",
+            sonuc: "Cevap: 12 Dakika",
+            sonucEk: "(-180) ÷ (-15) = 12 dakika",
+            adimlar: "<p class='p-3 bg-slate-50 rounded-xl text-slate-700'>(-180) ÷ (-15) = 12 dakika sürer.</p>"
+          },
+          {
+            id: "ts-4",
+            soruNo: "Problem 4",
+            baslik: "Problem 4: Günlük Borç / Zarar",
+            kesirGosterim: "-350 TL / 5 Gün",
+            soruKoku: "<p class='text-xs text-slate-300'>Kasasında 0 TL bulunan bir manav 5 gün boyunca her gün eşit miktarda zarar etmiş ve 5 günün sonunda kasası -350 TL bakiye göstermiştir. Manavın günlük zararı kaç TL'dir?</p>",
+            ipucu: "(-350) ÷ 5 = ?",
+            tag: "GÜNLÜK 70 TL ZARAR",
+            sonuc: "Cevap: -70 TL (70 TL Zarar)",
+            sonucEk: "(-350) ÷ 5 = -70 TL",
+            adimlar: "<p class='p-3 bg-slate-50 rounded-xl text-slate-700'>(-350) ÷ 5 = -70 TL. Yani her gün 70 TL zarar etmiştir.</p>"
+          },
+          {
+            id: "ts-5",
+            soruNo: "Problem 5",
+            baslik: "Problem 5: Asansör Hareketi",
+            kesirGosterim: "-16. Kat / (-2)",
+            soruKoku: "<p class='text-xs text-slate-300'>Zemin kattan (0. kat) otopark katlarına inen bir asansör her saniyede 2 kat aşağı inmektedir. Asansör -16. kata kaç saniyede iner?</p>",
+            ipucu: "(-16) ÷ (-2)",
+            tag: "8 SANİYE",
+            sonuc: "Cevap: 8 Saniye",
+            sonucEk: "(-16) ÷ (-2) = 8 saniye",
+            adimlar: "<p class='p-3 bg-slate-50 rounded-xl text-slate-700'>(-16) ÷ (-2) = 8 saniyede ulaşır.</p>"
+          },
+          {
+            id: "ts-6",
+            soruNo: "Problem 6",
+            baslik: "Problem 6: Doğru ve Yanlış Puanı",
+            kesirGosterim: "14 Doğru, 6 Yanlış",
+            soruKoku: "<p class='text-xs text-slate-300'>20 soruluk bir sınavda her doğru cevap +5 puan, her yanlış cevap -2 puandır. 14 doğru ve 6 yanlış yapan bir öğrencinin toplam puanı kaçtır?</p>",
+            ipucu: "14 × (+5) + 6 × (-2)",
+            tag: "58 PUAN",
+            sonuc: "Cevap: 58 Puan",
+            sonucEk: "70 + (-12) = 58 puan",
+            adimlar: "<p class='p-3 bg-slate-50 rounded-xl text-slate-700'>Doğrulardan: 14 × 5 = +70. Yanlışlardan: 6 × (-2) = -12. Toplam: 70 - 12 = 58 puan.</p>"
+          },
+          {
+            id: "ts-7",
+            soruNo: "Problem 7",
+            baslik: "Problem 7: Dondurucu Sıcaklığı",
+            kesirGosterim: "-32°C Değişim / (-4°C)",
+            soruKoku: "<p class='text-xs text-slate-300'>Başlangıç sıcaklığı 24°C olan bir et dondurucuya konduğunda sıcaklığı saatte 4°C düşmektedir. Etin sıcaklığının -8°C olması için kaç saat gerekir?</p>",
+            ipucu: "Toplam sıcaklık değişimi: (-8) - 24 = -32°C",
+            tag: "8 SAAT",
+            sonuc: "Cevap: 8 Saat",
+            sonucEk: "(-32) ÷ (-4) = 8 saat",
+            adimlar: "<p class='p-3 bg-slate-50 rounded-xl text-slate-700'>Sıcaklık 24'ten -8'e 32 derece düşmelidir. (-32) ÷ (-4) = 8 saat sürer.</p>"
+          },
+          {
+            id: "ts-8",
+            soruNo: "Problem 8",
+            baslik: "Problem 8: Yanlış Başına -9 Puan",
+            kesirGosterim: "-135 Puan / (-9)",
+            soruKoku: "<p class='text-xs text-slate-300'>Bir yarışmada her yanlış cevap -9 puandır. Bütün soruları yanlış yaparak yarışmayı -135 puanla tamamlayan biri kaç soru cevaplamıştır?</p>",
+            ipucu: "(-135) ÷ (-9)",
+            tag: "15 SORU",
+            sonuc: "Cevap: 15 Soru",
+            sonucEk: "(-135) ÷ (-9) = 15 soru",
+            adimlar: "<p class='p-3 bg-slate-50 rounded-xl text-slate-700'>(-135) ÷ (-9) = 15 soru cevaplamıştır.</p>"
+          },
+          {
+            id: "ts-9",
+            soruNo: "Problem 9",
+            baslik: "Problem 9: Kilo Kaybı",
+            kesirGosterim: "-18 kg / 6 Ay",
+            soruKoku: "<p class='text-xs text-slate-300'>Düzenli diyet ve spor yapan bir kişi 6 ayda toplam 18 kg kaybetmiştir (-18 kg değişim). Her ay eşit kilo verdiğine göre ayda kaç kg vermiştir?</p>",
+            ipucu: "(-18) ÷ 6",
+            tag: "AYDA 3 KG",
+            sonuc: "Cevap: -3 kg (Ayda 3 kg)",
+            sonucEk: "(-18) ÷ 6 = -3 kg",
+            adimlar: "<p class='p-3 bg-slate-50 rounded-xl text-slate-700'>(-18) ÷ 6 = -3 kg. Her ay ortalama 3 kg vermiştir.</p>"
+          },
+          {
+            id: "ts-10",
+            soruNo: "Problem 10",
+            baslik: "Problem 10: Maden Ocağı Derinliği",
+            kesirGosterim: "-144 m / (-12 m)",
+            soruKoku: "<p class='text-xs text-slate-300'>Yer seviyesindeki (0 metre) maden asansörü dakikada 12 metre aşağıya inmektedir. Asansör -144 metredeki galeriye kaç dakikada iner?</p>",
+            ipucu: "(-144) ÷ (-12)",
+            tag: "12 DAKİKA",
+            sonuc: "Cevap: 12 Dakika",
+            sonucEk: "(-144) ÷ (-12) = 12 dakika",
+            adimlar: "<p class='p-3 bg-slate-50 rounded-xl text-slate-700'>(-144) ÷ (-12) = 12 dakika sürer.</p>"
+          }
+        ]
+      },
+
+      // TEMA 2: 11. SORU (SIRALAMA)
+      soru11: {
+        title: "11. Soru (Tahta ve Defter Görseli)",
+        badge: "1 Soru",
+        items: [
+          {
+            id: "s11-1",
+            soruNo: "11. Soru",
+            baslik: "11. Soru: Negatif Bileşik Kesirleri Sıralama",
+            kesirGosterim: "-45/44 , -39/38 , -50/49",
+            soruKoku: `
+              <div class="space-y-3 text-left">
+                <div class="bg-slate-800 p-3 rounded-xl border border-slate-700">
+                  <span class="text-[11px] text-indigo-300 font-bold block mb-1">Tahtada Yazan Soru:</span>
+                  <div class="text-center font-mono text-base font-bold text-amber-300">
+                    -45/44  ,  -39/38  ,  -50/49
+                  </div>
+                </div>
+                <div class="bg-indigo-950/70 p-3 rounded-xl border border-indigo-700/60">
+                  <span class="text-[11px] text-amber-300 font-bold block mb-1">Öğrencinin Defterine Yazdığı:</span>
+                  <div class="text-center font-mono text-base font-bold text-white tracking-wide">
+                    -50/49  &lt;  -45/44  &lt;  -39/38
+                  </div>
+                </div>
+                <p class="text-xs text-center text-slate-300 italic">Öğrencinin sıralaması doğru mudur? Matematiksel gerekçelerle açıklayınız.</p>
+              </div>
+            `,
+            ipucu: "Bileşik kesirler. Pozitifte 39/38 > 45/44 > 50/49. Negatifte ne olur?",
+            tag: "SIRALAMA YANLIŞTIR!",
+            sonuc: "-39/38  <  -45/44  <  -50/49",
+            sonucEk: "En küçük: -39/38 (-1,0263)  |  En büyük: -50/49 (-1,0204)",
+            adimlar: `
+              <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                <span class="text-[10px] font-bold uppercase text-indigo-800 block">1. Adım: Pozitif Halleri</span>
+                <p class="text-slate-700 mt-0.5">Pozitifte paydası küçük olan büyüktür: <strong>39/38 &gt; 45/44 &gt; 50/49</strong>.</p>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                <span class="text-[10px] font-bold uppercase text-rose-800 block">2. Adım: Negatifin Etkisi</span>
+                <p class="text-slate-700 mt-0.5">Negatif olunca sıralama tam tersine döner: <strong>-39/38 &lt; -45/44 &lt; -50/49</strong>.</p>
+              </div>
+              <div class="p-3 rounded-xl bg-amber-50 border border-amber-200">
+                <span class="text-[10px] font-bold uppercase text-amber-900 block">3. Adım: Öğrencinin Hatası</span>
+                <p class="text-amber-950 mt-0.5">Öğrenci negatif sayılarda küçüktür (&lt;) işaretlerini tersine çevirmeyi unutmuştur!</p>
+              </div>
+            `
+          }
+        ]
+      },
+
+      // TEMA 2: SIRALAMA 10 SORU
+      siralama10: {
+        title: "10 Çözümlü Sıralama Sorusu",
+        badge: "10 Soru",
+        items: [
+          {
+            id: "sir-1",
+            soruNo: "Örnek 1",
+            baslik: "Negatif Bileşik Kesirler",
+            kesirGosterim: "-11/10 , -15/14 , -21/20",
+            soruKoku: "<div class='text-center font-mono text-base font-bold text-amber-300 py-2'>-11/10  ,  -15/14  ,  -21/20</div><p class='text-xs text-slate-300 text-center'>Küçükten büyüğe sıralayınız.</p>",
+            ipucu: "Farklar 1. Pozitifte 11/10 > 15/14 > 21/20",
+            tag: "KÜÇÜKTEN BÜYÜĞE",
+            sonuc: "-11/10  <  -15/14  <  -21/20",
+            sonucEk: "-1,10 < -1,07 < -1,05",
+            adimlar: "<p class='p-3 bg-slate-50 rounded-xl text-slate-700'>Pozitifte büyük olan negatifte en küçük olur.</p>"
+          },
+          {
+            id: "sir-2",
+            soruNo: "Örnek 2",
+            baslik: "Negatif Basit Kesirler",
+            kesirGosterim: "-2/3 , -5/6 , -8/9",
+            soruKoku: "<div class='text-center font-mono text-base font-bold text-amber-300 py-2'>-2/3  ,  -5/6  ,  -8/9</div><p class='text-xs text-slate-300 text-center'>Küçükten büyüğe sıralayınız.</p>",
+            ipucu: "Basit kesirlerde pozitifte sayılar büyüdükçe kesir büyür.",
+            tag: "BASİT KESİR",
+            sonuc: "-8/9  <  -5/6  <  -2/3",
+            sonucEk: "-0,88̄ < -0,83̄ < -0,66̄",
+            adimlar: "<p class='p-3 bg-slate-50 rounded-xl text-slate-700'>Pozitifte 8/9 > 5/6 > 2/3 olduğundan, negatifte tam tersidir.</p>"
+          }
+        ]
+      },
+
+      // TEMA 3: 7. SORU (? / 35)
+      soru7: {
+        title: "7. Soru: ? / 35 Analizi",
+        badge: "1 Soru",
+        items: [
+          {
+            id: "s7-1",
+            soruNo: "7. Soru",
+            baslik: "7. Soru: ? / 35 Sayısının Sonlu Olma Şartı",
+            kesirGosterim: "? / 35",
+            soruKoku: "<div class='text-center font-mono text-2xl font-bold text-amber-300 py-2'>? / 35</div><p class='text-xs text-slate-300 text-center'>Bu sayının sonlu ondalık olması için ? yerine yazılabilecek tam sayıların ortak özelliği nedir?</p>",
+            ipucu: "35 = 5 · 7. Paydadaki 7 sadeleşerek yok edilmelidir.",
+            tag: "7'NİN TAM KATI",
+            sonuc: "? sayısı 7'nin tam katı olmalıdır",
+            sonucEk: "Yani 7'ye kalansız bölünen sayılar: 7, 14, 21, 28, 35...",
+            adimlar: `
+              <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                <span class="text-[10px] font-bold uppercase text-indigo-800 block">1. Adım: Paydanın Asalları</span>
+                <p class="text-slate-700 mt-0.5">35 = 5 · 7'dir. 5 çarpanı uygundur fakat 7 asal çarpanı sayıyı devirli yapar.</p>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                <span class="text-[10px] font-bold uppercase text-emerald-800 block">2. Adım: Sadeleşme Şartı</span>
+                <p class="text-slate-700 mt-0.5">Kesrin sonlu çıkması için paydadaki 7'nin sadeleşmesi gerekir. Bu yüzden ? sayısı <strong>7'nin tam katı</strong> olmalıdır.</p>
+              </div>
+            `
+          }
+        ]
+      },
+
+      // TEMA 3: ? BULMA 10 SORU
+      benzer10: {
+        title: "10 Çözümlü ? Bulma Sorusu",
+        badge: "10 Soru",
+        items: [
+          {
+            id: "b-1",
+            soruNo: "Örnek 1",
+            baslik: "Örnek 1: ? / 12",
+            kesirGosterim: "? / 12",
+            soruKoku: "<div class='text-center font-mono text-xl font-bold text-amber-300 py-2'>? / 12</div><p class='text-xs text-slate-300 text-center'>Sonlu ondalık olması için ? yerine ne yazılmalıdır?</p>",
+            ipucu: "12 = 2² · 3",
+            tag: "3'ÜN KATI",
+            sonuc: "? sayısı 3'ün tam katı olmalıdır",
+            sonucEk: "3, 6, 9, 12, 15...",
+            adimlar: "<p class='p-3 bg-slate-50 rounded-xl text-slate-700'>12 = 2² · 3'tür. 3 çarpanının sadeleşmesi için ? sayısı 3'ün katı olmalıdır.</p>"
+          },
+          {
+            id: "b-2",
+            soruNo: "Örnek 2",
+            baslik: "Örnek 2: ? / 15",
+            kesirGosterim: "? / 15",
+            soruKoku: "<div class='text-center font-mono text-xl font-bold text-amber-300 py-2'>? / 15</div><p class='text-xs text-slate-300 text-center'>Sonlu ondalık olması için ? yerine ne yazılmalıdır?</p>",
+            ipucu: "15 = 3 · 5",
+            tag: "3'ÜN KATI",
+            sonuc: "? sayısı 3'ün tam katı olmalıdır",
+            sonucEk: "3, 6, 9, 12, 15...",
+            adimlar: "<p class='p-3 bg-slate-50 rounded-xl text-slate-700'>15 = 3 · 5'tir. 3 çarpanının sadeleşmesi için ? sayısı 3'ün katı olmalıdır.</p>"
+          }
+        ]
+      },
+
+      // TEMA 4: 5. SORU (TABLODAKİ 4 SAYI)
+      soru5: {
+        title: "5. Soru (Tablodaki 4 Sayı)",
+        badge: "4 Sayı",
+        items: [
+          {
+            id: "s5-1",
+            soruNo: "1. Sayı",
+            baslik: "7 / 20 İncelemesi",
+            kesirGosterim: "7 / 20",
+            soruKoku: "<div class='text-center font-mono text-2xl font-bold text-amber-300 py-2'>7 / 20</div><p class='text-xs text-slate-300 text-center'>Sonlu mudur, devirli midir?</p>",
+            ipucu: "20 = 2² · 5",
+            tag: "SONLU ONDALIK",
+            sonuc: "7 / 20 = 0,35",
+            sonucEk: "Sonlu ondalıktır",
+            adimlar: "<p class='p-3 bg-slate-50 rounded-xl text-slate-700'>Payda 20 = 2² · 5'tir. Sadece 2 ve 5 olduğu için sonludur.</p>"
+          },
+          {
+            id: "s5-2",
+            soruNo: "2. Sayı",
+            baslik: "-11 / 18 İncelemesi",
+            kesirGosterim: "-11 / 18",
+            soruKoku: "<div class='text-center font-mono text-2xl font-bold text-amber-300 py-2'>-11 / 18</div><p class='text-xs text-slate-300 text-center'>Sonlu mudur, devirli midir?</p>",
+            ipucu: "18 = 2 · 3²",
+            tag: "DEVİRLİ ONDALIK",
+            sonuc: "-11 / 18 = -0,61̄",
+            sonucEk: "Devirlidir",
+            adimlar: "<p class='p-3 bg-slate-50 rounded-xl text-slate-700'>Payda 18 = 2 · 3²'dir. 3 çarpanı devir yaptırır.</p>"
+          },
+          {
+            id: "s5-3",
+            soruNo: "3. Sayı",
+            baslik: "15 / 24 İncelemesi (Tuzak!)",
+            kesirGosterim: "15 / 24",
+            soruKoku: "<div class='text-center font-mono text-2xl font-bold text-amber-300 py-2'>15 / 24</div><p class='text-xs text-slate-300 text-center'>Sonlu mudur, devirli midir? (Önce sadeleştirin!)</p>",
+            ipucu: "3 ile sadeleşince: 5 / 8",
+            tag: "SONLU ONDALIK",
+            sonuc: "15 / 24 = 5 / 8 = 0,625",
+            sonucEk: "Sonludur!",
+            adimlar: "<p class='p-3 bg-amber-50 rounded-xl text-amber-950'>3 ile sadeleşince 5/8 olur. 8 = 2³ olup sadece 2 içerir, sonludur!</p>"
+          },
+          {
+            id: "s5-4",
+            soruNo: "4. Sayı",
+            baslik: "9 / 35 İncelemesi",
+            kesirGosterim: "9 / 35",
+            soruKoku: "<div class='text-center font-mono text-2xl font-bold text-amber-300 py-2'>9 / 35</div><p class='text-xs text-slate-300 text-center'>Sonlu mudur, devirli midir?</p>",
+            ipucu: "35 = 5 · 7",
+            tag: "DEVİRLİ ONDALIK",
+            sonuc: "9 / 35 = 0,2571428̄",
+            sonucEk: "6 basamak devreder",
+            adimlar: "<p class='p-3 bg-slate-50 rounded-xl text-slate-700'>35 = 5 · 7 olup 7 çarpanı nedeniyle devirlidir.</p>"
+          }
+        ]
+      },
+
+      // TEMA 5: DEVİRLİ SAYIYI KESRE ÇEVİRME
+      devirli9: {
+        title: "9 Çözümlü Devirli Kesir Sorusu",
+        badge: "9 Soru",
+        items: [
+          {
+            id: "d-1",
+            soruNo: "Örnek 1",
+            baslik: "0,27̄ Kesre Çevirme",
+            kesirGosterim: "0,27̄",
+            soruKoku: "<div class='text-center font-mono text-2xl font-bold text-amber-300 py-2'>0,27̄</div>",
+            ipucu: "(27 - 2) / 90",
+            tag: "5 / 18",
+            sonuc: "0,27̄ = 5 / 18",
+            sonucEk: "5 ile sadeleşti",
+            adimlar: "<p class='p-3 bg-slate-50 rounded-xl text-slate-700'>(27 - 2) / 90 = 25 / 90 = 5 / 18</p>"
+          },
+          {
+            id: "d-2",
+            soruNo: "Örnek 2",
+            baslik: "1,8̄ Kesre Çevirme",
+            kesirGosterim: "1,8̄",
+            soruKoku: "<div class='text-center font-mono text-2xl font-bold text-amber-300 py-2'>1,8̄</div>",
+            ipucu: "(18 - 1) / 9",
+            tag: "17 / 9",
+            sonuc: "1,8̄ = 17 / 9",
+            sonucEk: "Bileşik kesir",
+            adimlar: "<p class='p-3 bg-slate-50 rounded-xl text-slate-700'>(18 - 1) / 9 = 17 / 9</p>"
+          }
+        ]
+      }
+    };
+
+    let aktifKategori = 'soruYarisma';
+    let aktifIndex = 0;
+    let cozumAcik = false;
+
+    function setCategory(catKey) {
+      aktifKategori = catKey;
+      aktifIndex = 0;
+      cozumAcik = false;
+
+      document.querySelectorAll('.cat-btn').forEach(btn => {
+        btn.classList.remove('bg-indigo-50', 'border-indigo-300', 'shadow-sm', 'text-indigo-950');
+        btn.classList.add('border-slate-200', 'text-slate-700', 'bg-white');
+      });
+      const activeCatBtn = document.getElementById('cat-' + catKey);
+      if (activeCatBtn) {
+        activeCatBtn.classList.add('bg-indigo-50', 'border-indigo-300', 'shadow-sm', 'text-indigo-950');
+        activeCatBtn.classList.remove('border-slate-200', 'text-slate-700', 'bg-white');
+      }
+
+      document.getElementById('aktifBaslikRozet').textContent = DB[catKey].title;
+      document.getElementById('ortaSutunBaslik').textContent = DB[catKey].title;
+      document.getElementById('ortaSutunSayac').textContent = DB[catKey].badge;
+
+      renderOrtaSutun();
+      renderSagSutun();
+    }
+
+    function renderOrtaSutun() {
+      const container = document.getElementById('orneklerListesi');
+      container.innerHTML = '';
+
+      const items = DB[aktifKategori].items;
+      items.forEach((item, idx) => {
+        const isSelected = idx === aktifIndex;
+        const btn = document.createElement('button');
+        btn.onclick = () => selectItem(idx);
+
+        btn.className = `w-full text-left p-3 rounded-xl border transition-all flex items-center justify-between gap-2 ${
+          isSelected 
+            ? 'bg-indigo-600 text-white border-indigo-700 shadow-md ring-2 ring-indigo-200' 
+            : 'bg-white hover:bg-slate-100/80 border-slate-200 hover:border-slate-300 text-slate-800'
+        }`;
+
+        btn.innerHTML = `
+          <div class="truncate">
+            <div class="font-bold text-xs ${isSelected ? 'text-white' : 'text-slate-900'} truncate">
+              ${item.soruNo}: <span class="font-mono text-xs ml-1 font-bold">${item.kesirGosterim}</span>
+            </div>
+            <div class="text-[11px] ${isSelected ? 'text-indigo-100' : 'text-slate-500'} truncate mt-0.5">
+              ${item.ipucu}
+            </div>
+          </div>
+          <span class="text-[10px] font-bold px-2 py-0.5 rounded-full flex-shrink-0 ${
+            isSelected ? 'bg-white/20 text-white border border-white/30' : 'bg-slate-100 text-slate-600 border border-slate-200'
+          }">
+            Soru ${idx + 1}
+          </span>
+        `;
+        container.appendChild(btn);
+      });
+    }
+
+    function selectItem(idx) {
+      aktifIndex = idx;
+      cozumAcik = false;
+      renderOrtaSutun();
+      renderSagSutun();
+    }
+
+    function navigateItem(delta) {
+      const total = DB[aktifKategori].items.length;
+      let newIdx = aktifIndex + delta;
+      if (newIdx >= 0 && newIdx < total) {
+        selectItem(newIdx);
+      }
+    }
+
+    function toggleCozum() {
+      cozumAcik = !cozumAcik;
+      guncelleCozumGorunumu();
+    }
+
+    function guncelleCozumGorunumu() {
+      const panel = document.getElementById('gizliCozumPaneli');
+      const btnText = document.getElementById('toggleText');
+      const icon = document.getElementById('toggleIcon');
+      const btn = document.getElementById('btnToggleCozum');
+
+      if (cozumAcik) {
+        panel.classList.remove('hidden');
+        btnText.textContent = "Çözümü ve Gerekçeyi Gizle";
+        icon.textContent = "🙈";
+        btn.classList.remove('bg-indigo-600', 'hover:bg-indigo-700');
+        btn.classList.add('bg-slate-700', 'hover:bg-slate-800');
+      } else {
+        panel.classList.add('hidden');
+        btnText.textContent = "Çözümü ve Matematiksel Gerekçeyi Aç";
+        icon.textContent = "👁️";
+        btn.classList.remove('bg-slate-700', 'hover:bg-slate-800');
+        btn.classList.add('bg-indigo-600', 'hover:bg-indigo-700');
+      }
+    }
+
+    function renderSagSutun() {
+      const item = DB[aktifKategori].items[aktifIndex];
+      const total = DB[aktifKategori].items.length;
+
+      document.getElementById('cozumBasligi').textContent = item.baslik;
+      document.getElementById('sayfaGostergesi').textContent = `${aktifIndex + 1} / ${total}`;
+      document.getElementById('soruSiraRozet').textContent = `Soru ${aktifIndex + 1} / ${total}`;
+
+      // Soru Kutusu
+      document.getElementById('soruTipiEtiket').textContent = `${DB[aktifKategori].title} • Soru ${aktifIndex + 1}`;
+      document.getElementById('soruIcerik').innerHTML = item.soruKoku;
+
+      // Çözüm Detayları
+      document.getElementById('cozumRozetMetni').textContent = item.tag;
+      document.getElementById('cozumRozetTag').innerHTML = `
+        <span class="px-3 py-1 rounded-full text-xs font-bold bg-indigo-600 text-white shadow-sm">${item.tag}</span>
+      `;
+
+      document.getElementById('nihaiSonucMetni').textContent = item.sonuc;
+      document.getElementById('nihaiSonucEk').textContent = item.sonucEk || "";
+
+      document.getElementById('adimlarKutusu').innerHTML = item.adimlar;
+
+      // Buton aktiflikleri
+      document.getElementById('btnPrev').disabled = aktifIndex === 0;
+      document.getElementById('btnNext').disabled = aktifIndex === total - 1;
+      document.getElementById('btnPrev').classList.toggle('opacity-40', aktifIndex === 0);
+      document.getElementById('btnNext').classList.toggle('opacity-40', aktifIndex === total - 1);
+
+      guncelleCozumGorunumu();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      setCategory('soruYarisma');
+    });
+  </script>
+</body>
+</html>
